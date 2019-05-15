@@ -1,4 +1,4 @@
-import { getButtonElement, getElement, getTextAreaElement } from "./misc.js";
+import { getButtonElement, getTextAreaElement } from "./misc.js";
 
 export default class Editor {
   /**
@@ -10,14 +10,14 @@ export default class Editor {
 
     this.options = options;
 
+    const { el } = this.options;
+    this._elOpenPreferences = getButtonElement('.js-openPreferences', el);
+    this._elContent = getTextAreaElement('.js-text', el);
+
     this._setUp();
   }
 
   destroy () {
-    if (!this._elOpenPreferences || !this._elContent) {
-      throw new Error('Elements are not ready');
-    }
-
     this._elOpenPreferences.removeEventListener(
       'click',
       this.onOpenPreferencesClick,
@@ -29,10 +29,6 @@ export default class Editor {
    * @param {Preferences} pref
    */
   setPreferences (pref) {
-    if (!this._elContent) {
-      throw new Error('Elements are not ready');
-    }
-
     this._elContent.style.fontSize = `${pref.fontSize}px`;
     this._elContent.style.lineHeight = `${pref.lineHeight}`;
   }
@@ -42,25 +38,18 @@ export default class Editor {
   }
 
   onContentChange () {
-    if (!this._elContent) {
-      throw new Error('Elements are not ready');
-    }
-
     const content = this._elContent.value;
     this._saveText(content);
   }
 
   _setUp () {
     const content = this._loadContent();
-    const { el } = this.options;
 
-    this._elOpenPreferences = getButtonElement('.js-openPreferences', el);
     this._elOpenPreferences.addEventListener(
       'click',
       this.onOpenPreferencesClick,
     );
 
-    this._elContent = getTextAreaElement('.js-text', el);
     this._elContent.value = content;
     this._elContent.addEventListener('input', this.onContentChange);
 

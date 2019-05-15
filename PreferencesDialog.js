@@ -4,10 +4,6 @@ import { initialState } from './Preferences.js';
 export default class PreferencesDialog {
   /** @type {Preferences} */
   get preferences () {
-    if (!this._elFontSize || !this._elLineHeight) {
-      throw new Error('Elements are not ready');
-    }
-
     /** @type {Preferences} */
     const preferences = {
       fontSize: Number(this._elFontSize.value),
@@ -25,7 +21,12 @@ export default class PreferencesDialog {
 
     this.options = options;
 
+    const { el } = this.options;
+    this._elDone = getButtonElement('.js-done', el);
+    this._elFontSize = getInputElement('.js-fontSize', el);
+    this._elLineHeight = getInputElement('.js-lineHeight', el);
     this._elResetDefault = getButtonElement('.js-resetDefault', this.options.el);
+
     this._setUp();
   }
 
@@ -51,16 +52,8 @@ export default class PreferencesDialog {
   }
 
   _setUp () {
-    const { el } = this.options;
-
-    this._elDone = getButtonElement('.js-done', el);
     this._elDone.addEventListener('click', this.onDoneClick);
-
-    this._elFontSize = getInputElement('.js-fontSize', el);
-    this._elLineHeight = getInputElement('.js-lineHeight', el);
-
     this._elResetDefault.addEventListener('click', this.onResetDefaultClick);
-
     this._setPreferences(this.options.preferences);
   }
 
@@ -68,10 +61,6 @@ export default class PreferencesDialog {
    * @param {Preferences} preferences
    */
   _setPreferences (preferences) {
-    if (!this._elFontSize || !this._elLineHeight) {
-      throw new Error('Elements are not ready');
-    }
-
     this._elFontSize.value = String(preferences.fontSize);
     this._elLineHeight.value = String(preferences.lineHeight);
   }
