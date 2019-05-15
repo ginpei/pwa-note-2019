@@ -30,7 +30,7 @@ export default class Editor {
    * @param {Preferences} pref
    */
   setPreferences (pref) {
-    console.log('# preferences', pref);
+    this._elContent.style.fontSize = `${pref.fontSize}px`;
   }
 
   onOpenPreferencesClick () {
