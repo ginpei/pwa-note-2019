@@ -11,6 +11,7 @@ function openPreferenceDialog () {
       onComplete: (preferences) => {
         Preferences.save(preferences);
         resolve(preferences);
+        dialog.destroy();
       },
       preferences,
     });

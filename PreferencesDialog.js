@@ -30,6 +30,11 @@ export default class PreferencesDialog {
     this._setUp();
   }
 
+  destroy () {
+    this._elDone.removeEventListener('click', this.onDoneClick);
+    this._elResetDefault.removeEventListener('click', this.onResetDefaultClick);
+  }
+
   open () {
     this.options.el.dataset.status = 'active';
   }
