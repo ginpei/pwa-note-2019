@@ -134,6 +134,17 @@ button {
 * Settings
 */
 
+.settingsGroup {
+  margin-bottom: 1rem;
+}
+
+.settingsGroup-heading {
+  font-size: 0.8em;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0 1rem;
+}
+
 .settingInput {
   background-color: #f9fcff;
   border-color: #ccc;
