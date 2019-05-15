@@ -1,0 +1,22 @@
+{
+  "name": "pwa-note",
+  "version": "1.0.0",
+  "description": "PWA example",
+  "scripts": {
+    "start": "browser-sync -f .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ginpei/pwa-note.git"
+  },
+  "author": "Ginpei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ginpei/pwa-note/issues"
+  },
+  "homepage": "https://github.com/ginpei/pwa-note#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.5"
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PWA Note</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="layout">
+    <div id="editor">
+      <header class="layout-header">
+        <div class="header">
+          <h1 class="header-title">PWA Note</h1>
+          <div class="header-buttons">
+            <button class="header-button js-openPreferences">💬</button>
+          </div>
+        </div>
+      </header>
+      <div class="layout-body">
+        <textarea class="editor js-text"></textarea>
+      </div>
+    </div>
+    <div id="preferencesDialog" class="dialog-outer">
+      <article class="dialog">
+        <div class="dialog-header">
+          <h1 class="dialog-title">Preferences</h1>
+        </div>
+        <div class="dialog-body">
+          <label class="settingInput">
+            <span class="settingInput-label">Font size</span>
+            <input
+              class="settingInput-input js-fontSize"
+              type="number"
+            />
+          </label>
+        </div>
+        <div class="dialog-footer">
+          <div class="container">
+            <button class="js-done">Done</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
