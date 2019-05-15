@@ -20,6 +20,9 @@ export function load () {
   });
 }
 
+/**
+ * @param {Preferences} preferences
+ */
 export function save (preferences) {
   return new Promise((resolve) => {
     const json = JSON.stringify(preferences);

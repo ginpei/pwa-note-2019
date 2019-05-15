@@ -1,12 +1,13 @@
 import Editor from './Editor.js';
 import * as Preferences from './Preferences.js';
 import PreferencesDialog from './PreferencesDialog.js';
+import { getElement } from './misc.js';
 
 function openPreferenceDialog () {
   return new Promise(async (resolve) => {
     const preferences = await Preferences.load();
     const dialog = new PreferencesDialog({
-      el: document.querySelector('#preferencesDialog'),
+      el: getElement('#preferencesDialog'),
       onComplete: (preferences) => {
         Preferences.save(preferences);
         resolve(preferences);
@@ -21,7 +22,7 @@ async function main () {
   const preferences = await Preferences.load();
 
   const editor = new Editor({
-    el: document.querySelector('#editor'),
+    el: getElement('#editor'),
     async onPreferences () {
       const newPref = await openPreferenceDialog();
       editor.setPreferences(newPref);

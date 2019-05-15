@@ -1,27 +1,26 @@
+import { getButtonElement, getElement, getTextAreaElement } from "./misc.js";
+
 export default class Editor {
   /**
    * @param {EditorOptions} options
    */
   constructor (options) {
     this.onOpenPreferencesClick = this.onOpenPreferencesClick.bind(this);
-    this.onPreferencesDialogDoneClick =
-      this.onPreferencesDialogDoneClick.bind(this);
     this.onContentChange = this.onContentChange.bind(this);
 
     this.options = options;
 
-    const content = this._loadContent();
-    this._setUp({ content });
+    this._setUp();
   }
 
   destroy () {
+    if (!this._elOpenPreferences || !this._elContent) {
+      throw new Error('Elements are not ready');
+    }
+
     this._elOpenPreferences.removeEventListener(
       'click',
       this.onOpenPreferencesClick,
-    );
-    this._elPreferencesDialogDone.removeEventListener(
-      'click',
-      this.onPreferencesDialogDoneClick,
     );
     this._elContent.removeEventListener('input', this.onContentChange);
   }
@@ -30,44 +29,47 @@ export default class Editor {
    * @param {Preferences} pref
    */
   setPreferences (pref) {
+    if (!this._elContent) {
+      throw new Error('Elements are not ready');
+    }
+
     this._elContent.style.fontSize = `${pref.fontSize}px`;
-    this._elContent.style.lineHeight = pref.lineHeight;
+    this._elContent.style.lineHeight = `${pref.lineHeight}`;
   }
 
   onOpenPreferencesClick () {
     this.options.onPreferences();
   }
 
-  onPreferencesDialogDoneClick () {
-    this._closePreferences();
-  }
-
   onContentChange () {
+    if (!this._elContent) {
+      throw new Error('Elements are not ready');
+    }
+
     const content = this._elContent.value;
     this._saveText(content);
   }
 
-  _setUp (settings) {
+  _setUp () {
+    const content = this._loadContent();
     const { el } = this.options;
 
-    /** @type {HTMLButtonElement} */
-    this._elOpenPreferences = el.querySelector('.js-openPreferences');
+    this._elOpenPreferences = getButtonElement('.js-openPreferences', el);
     this._elOpenPreferences.addEventListener(
       'click',
       this.onOpenPreferencesClick,
     );
 
-    /** @type {HTMLTextAreaElement} */
-    this._elContent = el.querySelector('.js-text');
-    this._elContent.value = settings.content;
+    this._elContent = getTextAreaElement('.js-text', el);
+    this._elContent.value = content;
     this._elContent.addEventListener('input', this.onContentChange);
-
-    /** @type {HTMLDivElement} */
-    this._elPreferencesDialog = el.querySelector('.js-preferencesDialog');
 
     this.setPreferences(this.options.preferences);
   }
 
+  /**
+   * @param {string} html
+   */
   _saveText (html) {
     window.localStorage.setItem('pwa-note/content', html);
   }

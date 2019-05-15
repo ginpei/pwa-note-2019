@@ -1,6 +1,12 @@
+import { getButtonElement, getInputElement } from './misc.js';
+
 export default class PreferencesDialog {
   /** @type {Preferences} */
   get preferences () {
+    if (!this._elFontSize || !this._elLineHeight) {
+      throw new Error('Elements are not ready');
+    }
+
     /** @type {Preferences} */
     const preferences = {
       fontSize: Number(this._elFontSize.value),
@@ -36,16 +42,13 @@ export default class PreferencesDialog {
   _setUp () {
     const { el } = this.options;
 
-    /** @type {HTMLButtonElement} */
-    this._elDone = el.querySelector('.js-done');
+    this._elDone = getButtonElement('.js-done', el);
     this._elDone.addEventListener('click', this.onDoneClick);
 
-    /** @type {HTMLInputElement} */
-    this._elFontSize = el.querySelector('.js-fontSize');
-    this._elFontSize.value = this.options.preferences.fontSize;
+    this._elFontSize = getInputElement('.js-fontSize', el);
+    this._elFontSize.value = String(this.options.preferences.fontSize);
 
-    /** @type {HTMLInputElement} */
-    this._elLineHeight = el.querySelector('.js-lineHeight');
-    this._elLineHeight.value = this.options.preferences.lineHeight;
+    this._elLineHeight = getInputElement('.js-lineHeight', el);
+    this._elLineHeight.value = String(this.options.preferences.lineHeight);
   }
 }

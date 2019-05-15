@@ -4,7 +4,8 @@
   "description": "PWA example",
   "scripts": {
     "start": "browser-sync",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "type-check": "tsc"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/ginpei/pwa-note#readme",
   "dependencies": {
-    "browser-sync": "^2.26.5"
+    "browser-sync": "^2.26.5",
+    "typescript": "^3.4.5"
   }
 }
