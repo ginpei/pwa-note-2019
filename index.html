@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="app" class="layout">
-    <div id="editor">
+  <div id="app">
+    <div id="editor" class="layout">
       <header class="layout-header">
         <div class="header">
           <h1 class="header-title">PWA Note</h1>
@@ -32,6 +32,16 @@
             <span class="settingInput-label">Font size</span>
             <input
               class="settingInput-input js-fontSize"
+              type="number"
+            />
+          </label>
+          <label class="settingInput">
+            <span class="settingInput-label">Line height</span>
+            <input
+              class="settingInput-input js-lineHeight"
+              max="3"
+              min="1"
+              step="0.1"
               type="number"
             />
           </label>
