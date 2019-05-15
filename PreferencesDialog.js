@@ -1,8 +1,10 @@
 export default class PreferencesDialog {
   /** @type {Preferences} */
   get preferences () {
+    /** @type {Preferences} */
     const preferences = {
       fontSize: Number(this._elFontSize.value),
+      lineHeight: Number(this._elLineHeight.value),
     };
     return preferences;
   }
@@ -41,5 +43,9 @@ export default class PreferencesDialog {
     /** @type {HTMLInputElement} */
     this._elFontSize = el.querySelector('.js-fontSize');
     this._elFontSize.value = this.options.preferences.fontSize;
+
+    /** @type {HTMLInputElement} */
+    this._elLineHeight = el.querySelector('.js-lineHeight');
+    this._elLineHeight.value = this.options.preferences.lineHeight;
   }
 }

@@ -11,7 +11,7 @@ export default class Editor {
     this.options = options;
 
     const content = this._loadContent();
-    this._setupDom({ content });
+    this._setUp({ content });
   }
 
   destroy () {
@@ -31,6 +31,7 @@ export default class Editor {
    */
   setPreferences (pref) {
     this._elContent.style.fontSize = `${pref.fontSize}px`;
+    this._elContent.style.lineHeight = pref.lineHeight;
   }
 
   onOpenPreferencesClick () {
@@ -46,7 +47,7 @@ export default class Editor {
     this._saveText(content);
   }
 
-  _setupDom (settings) {
+  _setUp (settings) {
     const { el } = this.options;
 
     /** @type {HTMLButtonElement} */
@@ -63,6 +64,8 @@ export default class Editor {
 
     /** @type {HTMLDivElement} */
     this._elPreferencesDialog = el.querySelector('.js-preferencesDialog');
+
+    this.setPreferences(this.options.preferences);
   }
 
   _saveText (html) {
