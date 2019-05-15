@@ -1,10 +1,10 @@
 const storageKey = 'pwa-note/preferences';
 
 /** @type {Preferences} */
-const initialState = {
+export const initialState = Object.freeze({
   fontSize: 20,
   lineHeight: 1.5,
-};
+});
 
 /**
  * @returns {Promise<Preferences>}
