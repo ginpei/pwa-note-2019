@@ -1,7 +1,7 @@
 import Editor from './Editor.js';
+import { getElement } from './misc.js';
 import * as Preferences from './Preferences.js';
 import PreferencesDialog from './PreferencesDialog.js';
-import { getElement } from './misc.js';
 
 function openPreferenceDialog () {
   return new Promise(async (resolve) => {
