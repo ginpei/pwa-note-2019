@@ -13,6 +13,11 @@ button {
   min-height: 2rem;
 }
 
+button > svg {
+  height: 1em;
+  width: 1em;
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
