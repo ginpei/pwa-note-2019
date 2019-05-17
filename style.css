@@ -117,10 +117,11 @@ button {
     "footer" 3rem
     / auto;
   left: 1rem;
-  margin: 0;
+  margin: auto;
   position: absolute;
   right: 1rem;
   top: 1rem;
+  max-width: calc(800px - 2rem);
 }
 
 .dialog-title {
@@ -132,6 +133,11 @@ button {
 
 .dialog-body {
   overflow: auto;
+}
+
+.dialog-footer {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /**
