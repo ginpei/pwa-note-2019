@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "PWA example",
   "scripts": {
-    "start": "browser-sync -f ./*.{html,css,js} --ss .",
+    "start": "browser-sync -f './*.html, ./*.css, ./*.js' --ss .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc"
   },
