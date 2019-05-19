@@ -96,8 +96,17 @@ button {
 
 .editor {
   border-style: none;
-  padding: 1rem calc(50vw - 400px + 1rem);
+  box-sizing: border-box;
+  padding: 1rem;
   resize: none;
+  width: 100%;
+}
+
+@media (min-width: 800px) {
+  .editor {
+    padding-left:  calc(50vw - 400px + 1rem);
+    padding-right:  calc(50vw - 400px + 1rem);
+  }
 }
 
 /**
