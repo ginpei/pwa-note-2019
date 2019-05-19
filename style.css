@@ -13,11 +13,6 @@ button {
   min-height: 2rem;
 }
 
-button > svg {
-  height: 1em;
-  width: 1em;
-}
-
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -25,6 +20,12 @@ button > svg {
   padding-right: 1rem;
   width: calc(100% - 2rem);
   max-width: calc(800px - 2rem);
+}
+
+.icon {
+  height: 1em;
+  vertical-align: bottom;
+  width: 1em;
 }
 
 #app {
