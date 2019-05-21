@@ -22,11 +22,11 @@ sw.addEventListener('activate', (event) => {
 
 sw.addEventListener('fetch', (event) => {
   const { pathname } = new URL(event.request.url);
-  if (pathname === '/') {
+  if (pathname === '/pwa-note-2019/') {
     const p = fetch(event.request)
       .catch(async () => {
         const cache = await caches.open('cache-v1.0.0');
-        const res = await cache.match('/offline.html');
+        const res = await cache.match('/pwa-note-2019/offline.html');
         return res;
       });
     // @ts-ignore
