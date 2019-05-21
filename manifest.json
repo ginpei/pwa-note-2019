@@ -9,7 +9,7 @@
     }
   ],
   "scope": "/pwa-note-2019/",
-  "start_url": "/",
+  "start_url": "/pwa-note-2019/",
   "display": "standalone",
   "theme_color": "#003366",
   "background_color": "#ffffff"
