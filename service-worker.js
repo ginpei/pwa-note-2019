@@ -3,7 +3,7 @@
 const sw = self;
 
 const cachePaths = [
-  '/offline.html',
+  '/pwa-note-2019/offline.html',
 ];
 
 sw.addEventListener('install', (event) => {
