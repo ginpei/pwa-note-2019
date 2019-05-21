@@ -11,8 +11,12 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', async () => {
-        const reg = await navigator.serviceWorker.register('/service-worker.js')
-        console.log('[ServiceWorker] Register');
+        try {
+          const reg = await navigator.serviceWorker.register('/service-worker.js')
+          console.log('[ServiceWorker] Register');
+        } catch (error) {
+          console.error(error);
+        }
       });
     }
   </script>
