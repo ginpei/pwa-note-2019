@@ -3,10 +3,20 @@ import { getElement } from './misc.js';
 import * as Preferences from './Preferences.js';
 import PreferencesDialog from './PreferencesDialog.js';
 
+// @ts-ignore
+/** @type {BeforeInstallPromptEvent | null} */
+let beforeInstallPromptEvent = null;
+
+// @ts-ignore
+window.addEventListener('beforeinstallprompt', (event) => {
+  beforeInstallPromptEvent = event;
+});
+
 function openPreferenceDialog () {
   return new Promise(async (resolve) => {
     const preferences = await Preferences.load();
     const dialog = new PreferencesDialog({
+      beforeInstallPromptEvent,
       el: getElement('#preferencesDialog'),
       onComplete: (preferences) => {
         Preferences.save(preferences);

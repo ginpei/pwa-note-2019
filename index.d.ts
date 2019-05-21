@@ -5,6 +5,7 @@ interface EditorOptions {
 }
 
 interface PreferencesDialogOptions {
+  beforeInstallPromptEvent: any | null; // BeforeInstallPromptEvent is not defined yet
   el: HTMLElement;
   onComplete: (pref: Preferences) => void;
   preferences: Preferences;

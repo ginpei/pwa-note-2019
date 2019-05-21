@@ -203,3 +203,10 @@ button {
   line-height: 2rem;
   width: 100%;
 }
+
+.settingItem-description {
+  color: #666;
+  height: 1.5em;
+  line-height: 1.5em;
+  font-size: 0.8em;
+}
