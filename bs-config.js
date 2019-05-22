@@ -19,5 +19,5 @@ module.exports = {
     },
   },
   startPath: '/pwa-note-2019/',
-  "ui": false,
+  ui: false,
 };
