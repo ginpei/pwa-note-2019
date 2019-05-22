@@ -37,7 +37,7 @@ button {
 */
 
 .layout {
-  --layout-header-height: 2rem;
+  --layout-header-height: 50px;
 
   display: grid;
   height: 100%;
